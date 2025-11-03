@@ -1,0 +1,128 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<style>
+    .home-hero {
+        text-align: center;
+        padding: 60px 20px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-radius: 20px;
+        color: white;
+        margin-bottom: 40px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .home-hero h1 {
+        font-size: 3rem;
+        margin-bottom: 20px;
+        animation: fadeInDown 1s ease;
+    }
+
+    .home-hero p {
+        font-size: 1.3rem;
+        animation: fadeInUp 1s ease;
+    }
+
+    @@keyframes fadeInDown {
+        from {
+            opacity: 0;
+            transform: translateY(-30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @@keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .cta-button {
+        display: inline-block;
+        margin-top: 20px;
+        padding: 15px 40px;
+        background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        color: white;
+        text-decoration: none;
+        border-radius: 50px;
+        font-size: 1.2rem;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 15px rgba(245, 87, 108, 0.4);
+    }
+
+    .cta-button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(245, 87, 108, 0.6);
+        color: white;
+    }
+
+    .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+        margin-top: 40px;
+    }
+
+    .feature-card {
+        background: white;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        border: 3px solid #667eea;
+    }
+
+    .feature-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .feature-icon {
+        font-size: 3rem;
+        margin-bottom: 15px;
+    }
+
+    .feature-title {
+        color: #667eea;
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+</style>
+
+<div class="home-hero">
+    <h1>🌟 Welcome to Project Lighthouse 🌟</h1>
+    <p>Illuminating your path to success!</p>
+    <a href="/Contact" class="cta-button">Get in Touch 🚀</a>
+</div>
+
+<div class="feature-grid">
+    <div class="feature-card">
+        <div class="feature-icon">💡</div>
+        <div class="feature-title">Innovative</div>
+        <p>Bringing fresh ideas and creative solutions to every challenge.</p>
+    </div>
+    <div class="feature-card">
+        <div class="feature-icon">⚡</div>
+        <div class="feature-title">Fast</div>
+        <p>Lightning-quick responses and efficient service delivery.</p>
+    </div>
+    <div class="feature-card">
+        <div class="feature-icon">🎯</div>
+        <div class="feature-title">Focused</div>
+        <p>Dedicated to achieving your goals with precision and care.</p>
+    </div>
+</div>
+

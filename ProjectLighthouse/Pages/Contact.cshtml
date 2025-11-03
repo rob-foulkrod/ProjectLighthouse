@@ -1,0 +1,188 @@
+@page
+@model ContactModel
+@{
+    ViewData["Title"] = "Contact Us";
+}
+
+<style>
+    .contact-container {
+        max-width: 700px;
+        margin: 40px auto;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        padding: 40px;
+        border-radius: 20px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        animation: slideIn 0.5s ease-out;
+    }
+
+    @@keyframes slideIn {
+        from {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .contact-title {
+        color: white;
+        text-align: center;
+        font-size: 2.5rem;
+        margin-bottom: 30px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        animation: bounce 1s ease infinite alternate;
+    }
+
+    @@keyframes bounce {
+        from {
+            transform: translateY(0);
+        }
+        to {
+            transform: translateY(-5px);
+        }
+    }
+
+    .fun-form {
+        background: white;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .fun-label {
+        color: #667eea;
+        font-weight: bold;
+        margin-bottom: 8px;
+        display: block;
+        font-size: 1.1rem;
+    }
+
+    .fun-input, .fun-textarea {
+        width: 100%;
+        padding: 12px;
+        border: 3px solid #667eea;
+        border-radius: 10px;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        margin-bottom: 20px;
+    }
+
+    .fun-input:focus, .fun-textarea:focus {
+        outline: none;
+        border-color: #764ba2;
+        box-shadow: 0 0 15px rgba(102, 126, 234, 0.5);
+        transform: scale(1.02);
+    }
+
+    .fun-textarea {
+        resize: vertical;
+        min-height: 150px;
+    }
+
+    .fun-button {
+        width: 100%;
+        padding: 15px;
+        background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        color: white;
+        border: none;
+        border-radius: 10px;
+        font-size: 1.2rem;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 15px rgba(245, 87, 108, 0.4);
+    }
+
+    .fun-button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(245, 87, 108, 0.6);
+    }
+
+    .fun-button:active {
+        transform: translateY(-1px);
+    }
+
+    .success-message {
+        background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);
+        color: #333;
+        padding: 20px;
+        border-radius: 10px;
+        text-align: center;
+        font-size: 1.2rem;
+        font-weight: bold;
+        margin-bottom: 20px;
+        animation: pulse 0.5s ease;
+        box-shadow: 0 5px 15px rgba(132, 250, 176, 0.4);
+    }
+
+    @@keyframes pulse {
+        0% {
+            transform: scale(0.95);
+        }
+        50% {
+            transform: scale(1.05);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
+
+    .emoji-decoration {
+        font-size: 2rem;
+        display: inline-block;
+        animation: rotate 2s linear infinite;
+    }
+
+    @@keyframes rotate {
+        from {
+            transform: rotate(0deg);
+        }
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    .contact-intro {
+        color: white;
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 1.1rem;
+    }
+</style>
+
+<div class="contact-container">
+    <h1 class="contact-title">
+        <span class="emoji-decoration">✨</span> Contact Us <span class="emoji-decoration">✨</span>
+    </h1>
+    <p class="contact-intro">We'd love to hear from you! Drop us a message and we'll get back to you soon! 🚀</p>
+    
+    @if (!string.IsNullOrEmpty(Model.SuccessMessage))
+    {
+        <div class="success-message">
+            @Model.SuccessMessage
+        </div>
+    }
+
+    <div class="fun-form">
+        <form method="post">
+            <div>
+                <label class="fun-label" for="Name">👤 Your Name</label>
+                <input class="fun-input" type="text" id="Name" name="Name" placeholder="Enter your awesome name..." required />
+            </div>
+
+            <div>
+                <label class="fun-label" for="Email">📧 Your Email</label>
+                <input class="fun-input" type="email" id="Email" name="Email" placeholder="your.email@example.com" required />
+            </div>
+
+            <div>
+                <label class="fun-label" for="Message">💬 Your Message</label>
+                <textarea class="fun-textarea" id="Message" name="Message" placeholder="Tell us what's on your mind..." required></textarea>
+            </div>
+
+            <button type="submit" class="fun-button">Send Message 🚀</button>
+        </form>
+    </div>
+</div>
