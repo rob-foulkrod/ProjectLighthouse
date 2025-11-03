@@ -64,7 +64,8 @@ jobs:
         uses: azure/webapps-deploy@v3
         with:
           app-name: 'ProjectLighthouseB'
-          slot-name: 'Production'
+          slot-name: 'staging'
           # download-artifact extracts the published files into ./dotnet-app
           package: ./dotnet-app
+
 
