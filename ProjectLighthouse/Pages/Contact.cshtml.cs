@@ -43,7 +43,8 @@ namespace ProjectLighthouse.Pages
 
             // Set success message - read from configuration or use default
             var defaultMessage = "🎉 Thank you for your message! We'll get back to you soon! 🎉";
-            SuccessMessage = _configuration["CONTACT_REPLY"] ?? defaultMessage;
+            var configuredMessage = _configuration["CONTACT_REPLY"];
+            SuccessMessage = string.IsNullOrWhiteSpace(configuredMessage) ? defaultMessage : configuredMessage;
 
             // Clear the form
             ModelState.Clear();
