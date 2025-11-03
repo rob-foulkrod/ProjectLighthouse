@@ -45,10 +45,12 @@ jobs:
       contents: read #This is required for actions/checkout
 
     steps:
+      # Download artifact in deploy job
       - name: Download artifact from build job
         uses: actions/download-artifact@v4
         with:
           name: dotnet-app
+          path: ./dotnet-app
 
       - name: Login to Azure
         uses: azure/login@v2
@@ -65,3 +67,4 @@ jobs:
           slot-name: 'Production'
           # download-artifact extracts the published files into ./dotnet-app
           package: ./dotnet-app
+
