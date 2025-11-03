@@ -23,17 +23,19 @@ jobs:
         with:
           dotnet-version: '8.x'
 
-      - name: Build with dotnet
-        run: dotnet build --configuration Release
+      - name: Build with dotnet (project in subfolder)
+        # Build the project that lives in the ProjectLighthouse subfolder
+        run: dotnet build ./ProjectLighthouse -c Release
 
-      - name: dotnet publish
-        run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
+      - name: dotnet publish (project in subfolder)
+        # Publish the project in the ProjectLighthouse subfolder to a workspace-relative ./publish folder
+        run: dotnet publish ./ProjectLighthouse -c Release -o ./publish
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
-          name: .net-app
-          path: ${{env.DOTNET_ROOT}}/myapp
+          name: dotnet-app
+          path: ./publish
 
   deploy:
     runs-on: ubuntu-latest
@@ -46,8 +48,8 @@ jobs:
       - name: Download artifact from build job
         uses: actions/download-artifact@v4
         with:
-          name: .net-app
-      
+          name: dotnet-app
+
       - name: Login to Azure
         uses: azure/login@v2
         with:
@@ -61,5 +63,5 @@ jobs:
         with:
           app-name: 'ProjectLighthouseB'
           slot-name: 'Production'
-          package: .
-          
+          # download-artifact extracts the published files into ./dotnet-app
+          package: ./dotnet-app
